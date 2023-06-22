@@ -1,6 +1,6 @@
 #include "monty.h"
 
-vars global_vars = {NULL, NULL, NULL};
+global_vars_t global_vars = {NULL, NULL, NULL};
 
 /**
  * main - program entry point

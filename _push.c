@@ -17,8 +17,8 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
-	if ((new_node->n = atoi(global_vars.value)) == 0 && strcmp(global_vars.value, "0"))
+	new_node->n = atoi(global_vars.value);
+	if (new_node->n == 0 && strcmp(global_vars.value, "0") == 0)
 	{
 		fprintf(stderr, "L%d: usage push integer\n", line_number);
 		free_all(stack);

@@ -6,6 +6,20 @@
 #include <unistd.h>
 #include <sys/file.h>
 
+#define INSTRUCTIONS        \
+	{                       \
+		{"add", add},       \
+			{"nop", NULL},  \
+			{"pall", pall}, \
+			{"pint", pint}, \
+			{"pop", pop},   \
+			{"push", push}, \
+			{"swap", swap}, \
+		{                   \
+			NULL, NULL      \
+		}                   \
+	}
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -36,12 +50,21 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-typedef struct static_vars
+/**
+ * global_vars_s - struct used to contain global variables
+ *
+ * @file: the monty file pointer
+ * @op_code: the current interpreted operation code
+ * @value: the value of the current interpreted operation
+ *
+ * Description: struct used to contain global variables
+ */
+typedef struct global_vars_s
 {
 	FILE *file;
 	char *op_code;
 	char *value;
-} vars;
+} global_vars_t;
 
 void interpret(void);
 void free_all(stack_t **stack);
@@ -52,7 +75,6 @@ void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
 
-extern vars global_vars;
+extern global_vars_t global_vars;
 #endif
