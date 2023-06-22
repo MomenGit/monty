@@ -45,4 +45,5 @@ void interpret(void)
 		}
 		/*printf("%s %s\n", global_vars.op_code, global_vars.value);*/
 	}
+	free_all(&stack_top);
 }

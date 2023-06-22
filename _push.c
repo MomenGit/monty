@@ -20,7 +20,8 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if ((new_node->n = atoi(global_vars.value)) == 0 && strcmp(global_vars.value, "0"))
 	{
-		fprintf(stderr, "L%d: usage push n\n", line_number);
+		fprintf(stderr, "L%d: usage push integer\n", line_number);
+		free_all(stack);
 		exit(EXIT_FAILURE);
 	}
 	new_node->next = NULL;

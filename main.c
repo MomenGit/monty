@@ -24,7 +24,5 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	interpret();
-
-	fclose(global_vars.file);
 	return (0);
 }
